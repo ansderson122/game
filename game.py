@@ -16,8 +16,6 @@ level = level(tela)
 
 #text_surface = fonte.render('meu joguin',True,(0,0,0))
 
-inimigo_caracol = pygame.image.load('graphics/Inimigos/snail1.png').convert_alpha()
-caracol1_rect = inimigo_caracol.get_rect(bottomright = (600,300))
 
 player_surface = pygame.image.load('graphics/Player/player_walk_1.png')
 player_rect = player_surface.get_rect(midbottom = (80,300))
@@ -59,8 +57,7 @@ while True:
         #if player_rect.collidepoint(mouse_pos):
         #    print('colidiu')
         
-        if caracol1_rect.colliderect(player_rect):
-            game_active = False
+   
     #else:
     
     pygame.display.update()

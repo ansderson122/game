@@ -1,4 +1,6 @@
 import pygame 
+from inimigo import caracol
+from player import player
 
 class level():
     def __init__(self, surface):
@@ -8,6 +10,9 @@ class level():
 
         self.tempoInicial = 0
         self.fonte = pygame.font.Font(None, 50)
+
+        self.caracol = caracol(self.surface)
+        self.player = player(self.surface)
 
     def display_score(self):
         timer = int((pygame.time.get_ticks())/1000 - self.tempoInicial)
@@ -20,11 +25,15 @@ class level():
         self.surface.blit(self.ceu,(0,0))
         self.surface.blit(self.terra,(0,300))
         #tela.blit(text_surface, (600, 40))
-        #tela.blit(inimigo_caracol, caracol1_rect)
+        self.caracol.update()
         self.display_score()
-        #caracol1_rect.x -= 5
-        #if caracol1_rect.x <= -100: caracol1_rect.x = 800:
-    #    tela.blit(player_surface, player_rect)
+        self.caracol.mover()
+      
+        #tela.blit(player_surface, player_rect)
+
+        
+        if self.caracol.rect.colliderect(self.player.rect):
+            game_active = False
 
     def run(self):
         self.setup_level()
