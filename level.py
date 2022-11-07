@@ -29,7 +29,7 @@ class level():
         self.display_score()
         self.caracol.mover()
       
-        #tela.blit(player_surface, player_rect)
+        self.player.update()
 
         
         if self.caracol.rect.colliderect(self.player.rect):

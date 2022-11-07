@@ -13,28 +13,13 @@ game_active = True
 level = level(tela)
 
 
-
-#text_surface = fonte.render('meu joguin',True,(0,0,0))
-
-
-player_surface = pygame.image.load('graphics/Player/player_walk_1.png')
-player_rect = player_surface.get_rect(midbottom = (80,300))
-
-player_gravidade = 0
-
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        if game_active:    
-            if event.type == pygame.MOUSEBUTTONDOWN and player_rect.bottom >= 300:
-                player_gravidade = -20
+        if not game_active:    
             
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE and player_rect.bottom >= 300:
-                        player_gravidade = -20
-        else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 game_active = True
                 caracol1_rect.left = 800
@@ -48,9 +33,9 @@ while True:
         
         #player
         
-        player_gravidade += 1
-        player_rect.y += player_gravidade
-        if player_rect.bottom >= 300: player_rect.bottom = 300
+        #player_gravidade += 1
+        #player_rect.y += player_gravidade
+        #if player_rect.bottom >= 300: player_rect.bottom = 300
         
         #if player_rect.colliderect(caracol1_rect):
         #mouse_pos = pygame.mouse.get_pos()
