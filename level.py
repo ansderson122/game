@@ -1,6 +1,7 @@
 import pygame 
 from inimigo import caracol
 from player import player
+from menu import menu
 
 class level():
     def __init__(self, surface):
@@ -14,6 +15,7 @@ class level():
 
         self.caracol = caracol(self.surface)
         self.player = player(self.surface)
+        self.menu = menu(self.surface)
 
     def display_score(self):
         timer = int((pygame.time.get_ticks())/1000 - self.tempoInicial)
@@ -31,13 +33,15 @@ class level():
         self.surface.blit(self.terra,(0,300))
         
     def run(self):
-        self.setup_level()
+        if self.menu.active:
+            self.setup_level()
+            self.menu.draw()
+        else :
+            self.setup_level()
 
+            self.caracol.update()
+            self.display_score()
         
-
-        self.caracol.update()
-        self.display_score()
-       
-        self.player.update()
-        
-        self.colliderect1()
+            self.player.update()
+            
+            self.colliderect1()
