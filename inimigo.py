@@ -14,4 +14,5 @@ class caracol():
         if self.rect.x <= -100: self.rect.x = 800   
 
     def update(self):
+        self.mover()
         self.surface.blit(self.imagem, self.rect)

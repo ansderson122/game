@@ -10,6 +10,7 @@ class level():
 
         self.tempoInicial = 0
         self.fonte = pygame.font.Font(None, 50)
+        self.game_active = True
 
         self.caracol = caracol(self.surface)
         self.player = player(self.surface)
@@ -20,20 +21,23 @@ class level():
         score_rect = score_surf.get_rect(center = (400,50))
         self.surface.blit(score_surf, score_rect)
 
+    def colliderect1(self):
+        if self.caracol.rect.colliderect(self.player.rect):
+            self.game_active = False
+
 
     def setup_level(self):
         self.surface.blit(self.ceu,(0,0))
         self.surface.blit(self.terra,(0,300))
-        #tela.blit(text_surface, (600, 40))
-        self.caracol.update()
-        self.display_score()
-        self.caracol.mover()
-      
-        self.player.update()
-
         
-        if self.caracol.rect.colliderect(self.player.rect):
-            game_active = False
-
     def run(self):
         self.setup_level()
+
+        
+
+        self.caracol.update()
+        self.display_score()
+       
+        self.player.update()
+        
+        self.colliderect1()
