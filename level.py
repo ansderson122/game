@@ -32,19 +32,23 @@ class level():
         self.surface.blit(self.ceu,(0,0))
         self.surface.blit(self.terra,(0,300))
 
+    def morte(self):
+        event = pygame.event.wait()    
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+            self.game_active = True
+            self.caracol.rect.left = 800
+            self.tempoInicial = int((pygame.time.get_ticks())/1000)
+
    
         
     def run(self):
         
         if not self.game_active:
-            event = pygame.event.wait()    
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                self.game_active = True
-                self.caracol.rect.left = 800
-                self.tempoInicial = int((pygame.time.get_ticks())/1000)
+            self.morte()
         elif self.menu.active:
             self.setup_level()
             self.menu.draw()
+            self.caracol.velocidade = self.menu.velocidadeInimigo
         else :
             self.setup_level()
 

@@ -9,6 +9,8 @@ class menu:
 
         self.botaoSelecaoDificudade = selecaoDificudade()
         self.botaoInicia = botaoInicia()
+
+        self.velocidadeInimigo = 0
         
 
 
@@ -22,8 +24,10 @@ class menu:
         elif event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[0] :
             if  (self.mouse[0] >= 350 and self.mouse[0] <= 475) and (self.mouse[1] >= 150 and self.mouse[1] <= 200):
                 self.active = False
+                self.velocidadeInimigo = 5
             elif  (self.mouse[0] >= 325 and self.mouse[0] <= 475) and (self.mouse[1] >= 230 and self.mouse[1] <= 280):
                 self.active = False
+                self.velocidadeInimigo = 10
 
     def draw(self):
         self.clickInicia()
