@@ -16,10 +16,14 @@ class menu:
         self.mouse = pygame.mouse.get_pos() 
         event = pygame.event.wait()
 
-        if event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[0] :
-            if  (self.mouse[0] >= 350 and self.mouse[0] <= 475) and (self.mouse[1] >= 150 and self.mouse[1] <= 200):
+        if event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[0] and not self.selecaoDificudade :
+            if  (self.mouse[0] >= 325 and self.mouse[0] <= 475) and (self.mouse[1] >= 150 and self.mouse[1] <= 200):
                 self.selecaoDificudade = True
-
+        elif event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[0] :
+            if  (self.mouse[0] >= 350 and self.mouse[0] <= 475) and (self.mouse[1] >= 150 and self.mouse[1] <= 200):
+                self.active = False
+            elif  (self.mouse[0] >= 325 and self.mouse[0] <= 475) and (self.mouse[1] >= 230 and self.mouse[1] <= 280):
+                self.active = False
 
     def draw(self):
         self.clickInicia()

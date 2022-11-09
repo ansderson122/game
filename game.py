@@ -14,13 +14,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        if not level.game_active:    
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                level.game_active = True
-                level.caracol.rect.left = 800
-                tempoInicial = int((pygame.time.get_ticks())/1000)
-    if level.game_active:
-        level.run()
+    level.run()
     
     
     pygame.display.update()
