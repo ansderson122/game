@@ -19,7 +19,6 @@ class player():
             self.player_gravidade = -20
 
     def gravidade(self):
-       
         self.player_gravidade += 1 
 
     def update(self):

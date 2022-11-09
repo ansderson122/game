@@ -9,6 +9,7 @@ class menu:
 
         self.botaoSelecaoDificudade = selecaoDificudade()
         self.botaoInicia = botaoInicia()
+        self.voceMorre = voceMorreu()
 
         self.velocidadeInimigo = 0
         
@@ -80,3 +81,12 @@ class selecaoDificudade:
         score_surf1 = self.fonte.render('Difícil', False, (0,0,0))
         score_rect1 = score_surf1.get_rect(topleft = (350,250))
         surface.blit(score_surf1, score_rect1)
+
+class voceMorreu:
+    def __init__(self) -> None:
+        self.fonte =  pygame.font.Font(None, 100)
+
+    def draw(self,surface):
+        score_surf = self.fonte.render('Você Morreu', False, 'red')
+        score_rect = score_surf.get_rect(topleft = (300,170))       
+        surface.blit(score_surf, score_rect)

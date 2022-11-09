@@ -25,6 +25,7 @@ class level():
 
     def colliderect1(self):
         if self.caracol.rect.colliderect(self.player.rect):
+            self.menu.voceMorre.draw(self.surface)
             self.game_active = False
 
 
