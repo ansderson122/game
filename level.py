@@ -9,6 +9,7 @@ class level():
         self.ceu =  pygame.image.load('graphics/Tela/Sky.png').convert()
         self.terra = pygame.image.load('graphics/Tela/ground.png').convert()
 
+        self.numNivel = 0
         self.tempoInicial = 0
         self.fonte = pygame.font.Font(None, 50)
         self.game_active = True
@@ -16,12 +17,23 @@ class level():
         self.caracol = caracol(self.surface)
         self.player = player(self.surface)
         self.menu = menu(self.surface)
+        
 
     def display_score(self):
         self.timer = int((pygame.time.get_ticks())/1000 - self.tempoInicial)
-        score_surf = self.fonte.render(f'{self.timer}', False, (0,0,0))
+        score_surf = self.fonte.render(f'Time: {self.timer}', False, (0,0,0))
         score_rect = score_surf.get_rect(center = (400,50))
         self.surface.blit(score_surf, score_rect)
+
+
+       
+        if self.timer%5 == 0 and self.timer != 0:
+            self.numNivel+=(1/60) 
+        else:
+            self.numNivel
+        nivel = self.fonte.render(f'Nivel: {int(self.numNivel)}', False, (0,0,0))
+        nivelRect = nivel.get_rect(center = (700,50))
+        self.surface.blit(nivel, nivelRect)
 
     def colliderect1(self):
         if self.caracol.rect.colliderect(self.player.rect):
@@ -40,6 +52,8 @@ class level():
             self.caracol.rect.left = 800
             self.tempoInicial = int((pygame.time.get_ticks())/1000)
             self.caracol.velocidade = self.menu.velocidadeInimigo
+            self.numNivel = 0
+            self.menu.active = True
     
     def retornaMenu(self):
         key = pygame.key.get_pressed()

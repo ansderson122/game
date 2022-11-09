@@ -22,7 +22,7 @@ class player():
 
         if keys[pygame.K_s]:
             self.player_gravidade = 20
-        if keys[pygame.K_DOWN]:
+        elif keys[pygame.K_DOWN]:
             self.player_gravidade = 20
         
     def gravidade(self):
