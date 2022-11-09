@@ -14,10 +14,17 @@ class player():
 
         if keys[pygame.K_SPACE] and self.rect.bottom >= 300:
             self.player_gravidade = -20
-
-        if keys[pygame.MOUSEBUTTONDOWN] and self.rect.bottom >= 300:
+        elif keys[pygame.K_w] and self.rect.bottom >= 300:
+            self.player_gravidade = -20
+        elif keys[pygame.K_UP] and self.rect.bottom >= 300:
             self.player_gravidade = -20
 
+
+        if keys[pygame.K_s]:
+            self.player_gravidade = 20
+        if keys[pygame.K_DOWN]:
+            self.player_gravidade = 20
+        
     def gravidade(self):
         self.player_gravidade += 1 
 

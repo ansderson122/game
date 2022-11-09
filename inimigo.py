@@ -16,7 +16,7 @@ class caracol():
     def alteraVelocidade(self,tempo):
         if tempo%5 == 0 and tempo != 0:
             self.velocidade+=(1/60)
-            print("mais 1")
+
 
     def update(self):
         self.mover()
