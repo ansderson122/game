@@ -18,8 +18,8 @@ class level():
         self.menu = menu(self.surface)
 
     def display_score(self):
-        timer = int((pygame.time.get_ticks())/1000 - self.tempoInicial)
-        score_surf = self.fonte.render(f'{timer}', False, (0,0,0))
+        self.timer = int((pygame.time.get_ticks())/1000 - self.tempoInicial)
+        score_surf = self.fonte.render(f'{self.timer}', False, (0,0,0))
         score_rect = score_surf.get_rect(center = (400,50))
         self.surface.blit(score_surf, score_rect)
 
@@ -39,12 +39,13 @@ class level():
             self.game_active = True
             self.caracol.rect.left = 800
             self.tempoInicial = int((pygame.time.get_ticks())/1000)
+            self.caracol.velocidade = self.menu.velocidadeInimigo
     
     def retornaMenu(self):
         key = pygame.key.get_pressed()
         if key[pygame.K_ESCAPE]:
             self.menu.active = True
-   
+    
         
     def run(self):
         
@@ -56,11 +57,13 @@ class level():
             self.caracol.velocidade = self.menu.velocidadeInimigo
         else :
             self.setup_level()
+            self.display_score()
 
             self.caracol.update()
-            self.display_score()
-        
+            self.caracol.alteraVelocidade(self.timer)
+
             self.player.update()
             
             self.colliderect1()
             self.retornaMenu()
+            
