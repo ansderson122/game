@@ -38,7 +38,11 @@ class level():
             self.game_active = True
             self.caracol.rect.left = 800
             self.tempoInicial = int((pygame.time.get_ticks())/1000)
-
+    
+    def retornaMenu(self):
+        key = pygame.key.get_pressed()
+        if key[pygame.K_ESCAPE]:
+            self.menu.active = True
    
         
     def run(self):
@@ -58,3 +62,4 @@ class level():
             self.player.update()
             
             self.colliderect1()
+            self.retornaMenu()
