@@ -3,7 +3,7 @@ import pygame
 class player():
     def __init__(self,surface):
         self.surface = surface
-        self.imagem = pygame.image.load('graphics/Player/player_walk_1.png')
+        self.imagem = pygame.image.load('graphics/Player/playerW1.png')
         self.rect = self.imagem.get_rect(midbottom = (80,300))
         self.player_gravidade = 0
 

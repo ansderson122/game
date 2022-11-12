@@ -5,8 +5,8 @@ from player import player
 class level():
     def __init__(self, surface):
         self.surface = surface
-        self.ceu =  pygame.image.load('graphics/Tela/Sky.png').convert()
-        self.terra = pygame.image.load('graphics/Tela/ground.png').convert()
+        self.ceu =  pygame.image.load('graphics/Tela/ceu.png').convert()
+        self.terra = pygame.image.load('graphics/Tela/terra.png').convert()
 
         self.tempoInicial = 0
         self.fonte = pygame.font.Font(None, 50)
