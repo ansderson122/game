@@ -1,5 +1,5 @@
 import pygame 
-from inimigo import caracol
+from inimigo import inimigo1
 from player import player
 from menu import menu
 
@@ -14,7 +14,7 @@ class level():
         self.fonte = pygame.font.Font(None, 50)
         self.game_active = True
 
-        self.caracol = caracol(self.surface)
+        self.inimigo1 = inimigo1(self.surface)
         self.player = player(self.surface)
         self.menu = menu(self.surface)
         
@@ -36,7 +36,7 @@ class level():
         self.surface.blit(nivel, nivelRect)
 
     def colliderect1(self):
-        if self.caracol.rect.colliderect(self.player.rect):
+        if self.inimigo1.rect.colliderect(self.player.rect):
             self.menu.voceMorre.draw(self.surface)
             self.game_active = False
 
@@ -49,9 +49,9 @@ class level():
         event = pygame.event.wait()
         if pygame.mouse.get_pressed()[0] or event.type == pygame.KEYDOWN and ( event.key == pygame.K_SPACE or event.key == pygame.K_w or event.key == pygame.K_s or event.key == pygame.K_DOWN or event.key == pygame.K_UP) :
             self.game_active = True
-            self.caracol.rect.left = 800
+            self.inimigo1.rect.left = 800
             self.tempoInicial = int((pygame.time.get_ticks())/1000)
-            self.caracol.velocidade = self.menu.velocidadeInimigo
+            self.inimigo1.velocidade = self.menu.velocidadeInimigo
             self.numNivel = 0
             self.menu.active = True
     
@@ -68,13 +68,13 @@ class level():
         elif self.menu.active:
             self.setup_level()
             self.menu.draw()
-            self.caracol.velocidade = self.menu.velocidadeInimigo
+            self.inimigo1.velocidade = self.menu.velocidadeInimigo
         else :
             self.setup_level()
             self.display_score()
 
-            self.caracol.update()
-            self.caracol.alteraVelocidade(self.timer)
+            self.inimigo1.update()
+            self.inimigo1.alteraVelocidade(self.timer)
 
             self.player.update()
             
