@@ -1,4 +1,6 @@
 import pygame
+from player import player
+from inimigo import inimigo1
 
 class menu:
     def __init__(self,surface):
@@ -10,19 +12,23 @@ class menu:
         self.botaoSelecaoDificudade = selecaoDificudade()
         self.botaoInicia = botaoInicia()
         self.voceMorre = voceMorreu()
+        self.animacaoMenu = animacaoMenu(self.surface)
 
         self.velocidadeInimigo = 0
-        
+        self.tempo = 0
 
 
     def clickInicia(self):
         self.mouse = pygame.mouse.get_pos() 
-        event = pygame.event.wait()
+        event = pygame.event.get()
 
-        if event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[0] and not self.selecaoDificudade :
+        self.tempo += 1 
+
+        if pygame.mouse.get_pressed()[0] and not self.selecaoDificudade :
             if  (self.mouse[0] >= 325 and self.mouse[0] <= 475) and (self.mouse[1] >= 150 and self.mouse[1] <= 200):
                 self.selecaoDificudade = True
-        elif event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[0] :
+                self.tempo = 0
+        elif pygame.mouse.get_pressed()[0] and self.tempo > 60 :
             if  (self.mouse[0] >= 350 and self.mouse[0] <= 475) and (self.mouse[1] >= 150 and self.mouse[1] <= 200):
                 self.active = False
                 self.velocidadeInimigo = 5
@@ -33,8 +39,10 @@ class menu:
     def draw(self):
         self.clickInicia()
         if not self.selecaoDificudade:
+            self.animacaoMenu.run()
             self.botaoInicia.draw(self.surface)
         else:
+            self.animacaoMenu.run()
             self.botaoSelecaoDificudade.draw(self.surface)
 
 
@@ -90,3 +98,34 @@ class voceMorreu:
         score_surf = self.fonte.render('Você Morreu', False, 'red')
         score_rect = score_surf.get_rect(topleft = (300,170))       
         surface.blit(score_surf, score_rect)
+
+class animacaoMenu:
+    def __init__(self,surface):
+        self.inimigo = inimigo1(surface)
+
+        self.surface = surface
+        self.imagem = pygame.image.load('graphics/Player/playerW1.png')
+        self.rect = self.imagem.get_rect(midbottom = (80,300))
+        self.player_gravidade = 5
+        self.tempo = 0
+        self.ok = True
+
+
+    def player(self):
+        self.rect.y += self.player_gravidade
+        if self.rect.bottom >= 300: self.rect.bottom = 300
+        self.surface.blit(self.imagem, self.rect) 
+        
+    def run(self):
+        self.tempo += 1
+
+        if self.tempo == 80 and self.ok:
+            self.rect.y -= 180
+            self.tempo = 0
+            self.ok = False
+        if self.tempo == 180:
+            self.rect.y -= 180
+            self.tempo = 0
+
+        self.player()
+        self.inimigo.update()

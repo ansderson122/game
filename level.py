@@ -69,6 +69,7 @@ class level():
             self.setup_level()
             self.menu.draw()
             self.inimigo1.velocidade = self.menu.velocidadeInimigo
+            self.tempoInicial = int((pygame.time.get_ticks())/1000)
         else :
             self.setup_level()
             self.display_score()

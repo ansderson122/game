@@ -8,8 +8,8 @@ class inimigo1:
         self.rect = self.imagem.get_rect(bottomright = (600,300))
         self.tempo = 0
 
-        self.velocidade = int(5)
-        
+        self.velocidade = 5
+                
     def mover(self):
         self.rect.x -= 1 * self.velocidade
         if self.rect.x <= -100: self.rect.x = 800
