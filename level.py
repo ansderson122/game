@@ -47,7 +47,7 @@ class level():
 
     def morte(self):
         event = pygame.event.wait()
-        if event.type == pygame.KEYDOWN and (event.key == pygame.K_SPACE or event.key == pygame.K_w or event.key == pygame.K_s or event.key == pygame.K_DOWN or event.key == pygame.K_UP) :
+        if pygame.mouse.get_pressed()[0] or event.type == pygame.KEYDOWN and ( event.key == pygame.K_SPACE or event.key == pygame.K_w or event.key == pygame.K_s or event.key == pygame.K_DOWN or event.key == pygame.K_UP) :
             self.game_active = True
             self.caracol.rect.left = 800
             self.tempoInicial = int((pygame.time.get_ticks())/1000)

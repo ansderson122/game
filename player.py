@@ -10,7 +10,10 @@ class player():
     def get_input(self):
         keys = pygame.key.get_pressed()
         self.gravidade()                     
-       
+
+        if pygame.mouse.get_pressed()[0] and self.rect.bottom >= 300:
+            self.player_gravidade = -20
+        
 
         if keys[pygame.K_SPACE] and self.rect.bottom >= 300:
             self.player_gravidade = -20
@@ -23,6 +26,8 @@ class player():
         if keys[pygame.K_s]:
             self.player_gravidade = 20
         elif keys[pygame.K_DOWN]:
+            self.player_gravidade = 20
+        if pygame.mouse.get_pressed()[2]:
             self.player_gravidade = 20
         
     def gravidade(self):
