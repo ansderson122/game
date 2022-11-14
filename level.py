@@ -6,8 +6,8 @@ from menu import menu
 class level():
     def __init__(self, surface):
         self.surface = surface
-        self.ceu =  pygame.image.load('graphics/Tela/Sky.png').convert()
-        self.terra = pygame.image.load('graphics/Tela/ground.png').convert()
+        self.ceu =  pygame.image.load('graphics/Tela/ceu.png').convert()
+        self.terra = pygame.image.load('graphics/Tela/terra.png').convert()
 
         self.numNivel = 0
         self.tempoInicial = 0
