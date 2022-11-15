@@ -46,5 +46,6 @@ class player():
     def update(self):
         self.get_input()
         self.rect.y += self.player_gravidade
+        #self.animacao()
         if self.rect.bottom >= 300: self.rect.bottom = 300
         self.surface.blit(self.imagem, self.rect)     
