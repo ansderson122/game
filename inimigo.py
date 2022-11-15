@@ -27,11 +27,11 @@ class inimigo1:
         elif self.tempo <= (3*60/self.velocidade):
             self.imagem = pygame.image.load('graphics/Inimigos/l3.png').convert_alpha()
         elif self.tempo <= (4*60/self.velocidade):
-            self.imagem = pygame.image.load('graphics/Inimigos/l2.png').convert_alpha()
+            self.imagem = pygame.image.load('graphics/Inimigos/l4.png').convert_alpha()
         elif self.tempo <= (5*60/self.velocidade):
-            self.imagem = pygame.image.load('graphics/Inimigos/l2.png').convert_alpha()
+            self.imagem = pygame.image.load('graphics/Inimigos/l5.png').convert_alpha()
+        else:
             self.tempo = 0
-
 
     def update(self):
         self.mover()

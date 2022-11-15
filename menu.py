@@ -1,5 +1,4 @@
 import pygame
-from player import player
 from inimigo import inimigo1
 
 class menu:
@@ -24,17 +23,19 @@ class menu:
 
         self.tempo += 1 
 
-        if pygame.mouse.get_pressed()[0] and not self.selecaoDificudade :
+        if pygame.mouse.get_pressed()[0] and not self.selecaoDificudade and self.tempo > 20 :
             if  (self.mouse[0] >= 325 and self.mouse[0] <= 475) and (self.mouse[1] >= 150 and self.mouse[1] <= 200):
                 self.selecaoDificudade = True
                 self.tempo = 0
-        elif pygame.mouse.get_pressed()[0] and self.tempo > 60 :
+        elif pygame.mouse.get_pressed()[0] and self.tempo > 20 :
             if  (self.mouse[0] >= 350 and self.mouse[0] <= 475) and (self.mouse[1] >= 150 and self.mouse[1] <= 200):
                 self.active = False
                 self.velocidadeInimigo = 5
+                self.tempo = 0
             elif  (self.mouse[0] >= 325 and self.mouse[0] <= 475) and (self.mouse[1] >= 230 and self.mouse[1] <= 280):
                 self.active = False
                 self.velocidadeInimigo = 10
+                self.tempo = 0
 
     def draw(self):
         self.clickInicia()

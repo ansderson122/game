@@ -6,6 +6,7 @@ class player():
         self.imagem = pygame.image.load('graphics/Player/playerW1.png')
         self.rect = self.imagem.get_rect(midbottom = (80,300))
         self.player_gravidade = 0
+        self.tempo = 0
 
     def get_input(self):
         keys = pygame.key.get_pressed()
@@ -29,7 +30,16 @@ class player():
             self.player_gravidade = 20
         if pygame.mouse.get_pressed()[2]:
             self.player_gravidade = 20
-        
+
+    def animacao(self):
+        self.tempo +=1
+        if self.tempo <= (10):
+            self.imagem = pygame.image.load('graphics/Player/playerW1.png')
+        elif self.tempo <= (20):
+            self.imagem = pygame.image.load('graphics/Player/playerW2.png')
+        elif self.tempo <= (30): 
+            self.tempo = 0
+
     def gravidade(self):
         self.player_gravidade += 1 
 

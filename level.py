@@ -53,7 +53,9 @@ class level():
             self.tempoInicial = int((pygame.time.get_ticks())/1000)
             self.inimigo1.velocidade = self.menu.velocidadeInimigo
             self.numNivel = 0
+
             self.menu.active = True
+            self.menu.selecaoDificudade = False
     
     def retornaMenu(self):
         key = pygame.key.get_pressed()
