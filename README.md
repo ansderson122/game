@@ -4,6 +4,10 @@ Este projeto foi desenvolvido para a disciplina de laboratório de programação
 
 Para esse inplementação foi criado, um joga parecida como o dino ofline. Onde o objetivo é pula os obstaculos.
 <hr>
+
+![Game](/graphics/game.png)
+
+
 ### Para rodar esse jogo é necessário
 
 * Python3 
