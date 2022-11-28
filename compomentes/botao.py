@@ -1,13 +1,13 @@
 import pygame
 
 class botao:
-    #dis é as dimenção, pos é a posição 
-    def __init__(self,dis,pos=(0,0),texto="",corFundo='white'):
+    #dis é as dimenção, pos é a posição , tex para alinhamento do texto
+    def __init__(self,dis,pos=(0,0),texto="",corFundo='white', tex = (25,20),tamFonte= 25 ):
         self.fundo = quadrado(dis,pos,corFundo)
-        self.fonte =  pygame.font.Font(None, 25)
+        self.fonte =  pygame.font.Font(None, tamFonte)
 
         self.texto = self.fonte.render(texto, False, (0,0,0))
-        self.texto_rect = self.texto.get_rect(topleft = (pos[0]+25,pos[1]+20))
+        self.texto_rect = self.texto.get_rect(topleft = (pos[0]+tex[0],pos[1]+tex[1]))
 
     def draw(self,surface):
         self.fundo.draw(surface)
@@ -19,7 +19,7 @@ class quadrado:
     #dis é as dimenção do quadrado, pos é a posição 
     def __init__(self,dis = (0,0),pos = (0,0), cor = 'white'):
         self.quadrado = pygame.Surface(dis)
-        self.quadrado.fill(cor)
+        if cor != None: self.quadrado.fill(cor)
         self.quadradoRect = self.quadrado.get_rect(topleft = pos)
 
     def draw(self,surface):
