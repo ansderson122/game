@@ -71,6 +71,7 @@ class tutorial:
         self.surface = surface
         self.fechaTutorial = False
         self.textos = [
+            "Objetivo é não colide com os inimigos",
             "Controle:",
             "Pressione W para pular",
             "Pressione S para descer mais rapido",
@@ -91,10 +92,7 @@ class tutorial:
         self.fechaTutorial = False
         self.volta.draw(self.surface)
 
-        self.texto = botao((0,0),(50,50),"Objetivo é não colide com os inimigos",None,(25,20),35)
-        self.texto.draw(self.surface)
-
-        con = 120
+        con = 50
         for i in self.textos:
             self.texto = botao((0,0),(50,con),i,None,(25,20),35)
             self.texto.draw(self.surface)
@@ -116,13 +114,11 @@ class selecaoDificudade:
 
 
 class voceMorreu:
-    def __init__(self) -> None:
-        self.fonte =  pygame.font.Font(None, 100)
+    def __init__(self):
+       self.texto = botao((0,0),(300,170),'Você Morreu',None,(25,20),100,"red")
 
     def draw(self,surface):
-        score_surf = self.fonte.render('Você Morreu', False, 'red')
-        score_rect = score_surf.get_rect(topleft = (300,170))       
-        surface.blit(score_surf, score_rect)
+        self.texto.draw(surface)
 
 class animacaoMenu:
     def __init__(self,surface):
