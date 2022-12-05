@@ -1,6 +1,6 @@
 import pygame
 from inimigo import inimigo1
-from compomentes import *
+from componentes import *
 
 class menu:
     def __init__(self,surface):
