@@ -1,4 +1,3 @@
-import pygame
 from compomentes import botao
 
 class selecaoDificudade:

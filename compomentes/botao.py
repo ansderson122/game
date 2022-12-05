@@ -3,7 +3,7 @@ import pygame
 class botao:
     #dis é as dimenção, pos é a posição , tex para alinhamento do texto
     def __init__(self,dis,pos=(0,0),texto="",corFundo='white', tex = (25,20),tamFonte= 25,texCor = "black" ):
-        self.fundo = quadrado(dis,pos,corFundo)
+        self.fundo = fundo(dis,pos,corFundo)
         self.fonte =  pygame.font.Font(None, tamFonte)
 
         self.texto = self.fonte.render(texto, False, texCor)
@@ -13,7 +13,7 @@ class botao:
         self.fundo.draw(surface)
         surface.blit(self.texto, self.texto_rect)
 
-class quadrado:
+class fundo:
     def __init__(self,dis = (0,0),pos = (0,0), cor = 'white'):
         self.quadrado = pygame.Surface(dis)
         if cor != None: self.quadrado.fill(cor)
