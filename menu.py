@@ -1,15 +1,12 @@
 import pygame
 from inimigo import inimigo1
-from compomentes.botao import botao
+from compomentes import *
 
 class menu:
     def __init__(self,surface):
         self.fonte = pygame.font.Font(None, 25)
         self.surface = surface
-
         self.active = True 
-        self.selecaoDificudade = False
-        self.tutorial = False
 
         self.botaoSelecaoDificudade = selecaoDificudade()
         self.botaoInicia = botaoInicia()
@@ -17,9 +14,10 @@ class menu:
         self.animacaoMenu = animacaoMenu(self.surface)
         self.tutorialClass = tutorial(self.surface)
 
-        self.velocidadeInimigo = 0
+        self.velocidadeInimigo = 5
+        self.selecaoDificudade = False
+        self.tutorial = False
         self.tempo = 0
-
 
     def clickInicia(self):
         self.mouse = pygame.mouse.get_pos() 
@@ -55,63 +53,6 @@ class menu:
         else:
             self.animacaoMenu.run()
             self.botaoSelecaoDificudade.draw(self.surface)
-
-class botaoInicia:
-    def __init__(self):
-        self.inicia = botao((150,50),(325,150),'Inicia o jogo')
-        self.tutorial = botao((150,50),(325,230),'Tutorial')
-        
-    def draw(self,surface):
-        self.inicia.draw(surface)
-        self.tutorial.draw(surface)
-
-class tutorial:
-    def __init__(self,surface):
-        self.volta = botao((80,30),(0,0),"Volta",'white',(25,7))
-        self.surface = surface
-        self.fechaTutorial = False
-        self.textos = [
-            "Objetivo é não colide com os inimigos",
-            "Controle:",
-            "Pressione W para pular",
-            "Pressione S para descer mais rapido",
-            "Pressione UP para pular",
-            "Pressione DOWN para descer mais rapido",
-            "Pressione o botao esquerdo do mouse para pular",
-            "Pressione o botao direito do mouse para descer mais rapido",
-            "Pressione SPACE para pular",
-        ]
-
-    def clickVolta(self):
-        self.mouse = pygame.mouse.get_pos() 
-        if pygame.mouse.get_pressed()[0]:
-            if  (self.mouse[0] >= 0 and self.mouse[0] <= 80) and (self.mouse[1] >= 0 and self.mouse[1] <= 30):
-                self.fechaTutorial = True
-
-    def draw(self):
-        self.fechaTutorial = False
-        self.volta.draw(self.surface)
-
-        con = 50
-        for i in self.textos:
-            self.texto = botao((0,0),(50,con),i,None,(25,20),35)
-            self.texto.draw(self.surface)
-            con+=30
-   
-        self.clickVolta()
-
-    
-
-class selecaoDificudade:
-    def __init__(self):
-        self.normal = botao((150,50),(325,150),'Normal')
-        self.dificil = botao((150,50),(325,230),'Difícil')
-       
-
-    def draw(self,surface):
-       self.normal.draw(surface)
-       self.dificil.draw(surface)
-
 
 class voceMorreu:
     def __init__(self):
